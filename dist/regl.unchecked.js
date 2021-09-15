@@ -19775,9 +19775,9 @@ var allFns = {
     v265 = v264[0];
     v266 = v264[1];
     v8.uniform2f(paletteSize.location, v265, v266);
+    v8.uniform1i(paletteTexture.location, $13.bind());
     v267 = a0['opacity'];
     v8.uniform1f(opacity.location, v267);
-    v8.uniform1i(paletteTexture.location, $13.bind());
     v268 = a0['markerTexture'];
     if (v268 && v268._reglType === 'framebuffer') {
      v268 = v268.color[0];
@@ -23061,9 +23061,9 @@ var allFns = {
     v265 = v264[0];
     v266 = v264[1];
     v8.uniform2f(translateFract.location, v265, v266);
+    v8.uniform1i(paletteTexture.location, $13.bind());
     v267 = a0['opacity'];
     v8.uniform1f(opacity.location, v267);
-    v8.uniform1i(paletteTexture.location, $13.bind());
     v268 = a0['elements'];
     v269 = null;
     v270 = v9(v268);
@@ -24842,35 +24842,35 @@ var allFns = {
      if (!v416 || v516 !== v515 || v518 !== v517) {
       v516 = v515;
       v518 = v517;
-      v8.uniform2f(atlasSize.location, v515, v517);
+      v8.uniform2f(atlasDim.location, v515, v517);
      }
-     v519 = $21.call(this, v2, v417, v416);
+     v519 = v417['positionOffset'];
      v520 = v519[0];
      v522 = v519[1];
      if (!v416 || v521 !== v520 || v523 !== v522) {
       v521 = v520;
       v523 = v522;
-      v8.uniform2f(atlasDim.location, v520, v522);
+      v8.uniform2f(positionOffset.location, v520, v522);
      }
-     v524 = v417['positionOffset'];
-     v525 = v524[0];
-     v527 = v524[1];
-     if (!v416 || v526 !== v525 || v528 !== v527) {
-      v526 = v525;
-      v528 = v527;
-      v8.uniform2f(positionOffset.location, v525, v527);
+     v524 = $21.call(this, v2, v417, v416);
+     if (v524 && v524._reglType === 'framebuffer') {
+      v524 = v524.color[0];
      }
-     v529 = v417['opacity'];
-     if (!v416 || v530 !== v529) {
+     v525 = v524._texture;
+     v8.uniform1i(atlas.location, v525.bind());
+     v526 = v417['opacity'];
+     if (!v416 || v527 !== v526) {
+      v527 = v526;
+      v8.uniform1f(opacity.location, v526);
+     }
+     v528 = $22.call(this, v2, v417, v416);
+     v529 = v528[0];
+     v531 = v528[1];
+     if (!v416 || v530 !== v529 || v532 !== v531) {
       v530 = v529;
-      v8.uniform1f(opacity.location, v529);
+      v532 = v531;
+      v8.uniform2f(atlasSize.location, v529, v531);
      }
-     v531 = $22.call(this, v2, v417, v416);
-     if (v531 && v531._reglType === 'framebuffer') {
-      v531 = v531.color[0];
-     }
-     v532 = v531._texture;
-     v8.uniform1i(atlas.location, v532.bind());
      v534 = v417['offset'];
      v535 = v417['count'];
      if (v535) {
@@ -24890,7 +24890,7 @@ var allFns = {
         v8.drawArrays(0, v534, v535);
        }
       }
-      v532.unbind();
+      v525.unbind();
      }
     }
     if (v419) {
@@ -25511,31 +25511,31 @@ var allFns = {
     v182 = $5.call(this, v2, a0, 0);
     v183 = v182[0];
     v184 = v182[1];
-    v8.uniform2f(atlasSize.location, v183, v184);
-    v185 = $6.call(this, v2, a0, 0);
+    v8.uniform2f(atlasDim.location, v183, v184);
+    v185 = this['scale'];
     v186 = v185[0];
     v187 = v185[1];
-    v8.uniform2f(atlasDim.location, v186, v187);
-    v188 = this['scale'];
+    v8.uniform2f(scale.location, v186, v187);
+    v188 = this['translate'];
     v189 = v188[0];
     v190 = v188[1];
-    v8.uniform2f(scale.location, v189, v190);
-    v191 = this['translate'];
+    v8.uniform2f(translate.location, v189, v190);
+    v191 = a0['positionOffset'];
     v192 = v191[0];
     v193 = v191[1];
-    v8.uniform2f(translate.location, v192, v193);
-    v194 = a0['positionOffset'];
-    v195 = v194[0];
-    v196 = v194[1];
-    v8.uniform2f(positionOffset.location, v195, v196);
-    v197 = a0['opacity'];
-    v8.uniform1f(opacity.location, v197);
-    v198 = $7.call(this, v2, a0, 0);
-    if (v198 && v198._reglType === 'framebuffer') {
-     v198 = v198.color[0];
+    v8.uniform2f(positionOffset.location, v192, v193);
+    v194 = $6.call(this, v2, a0, 0);
+    if (v194 && v194._reglType === 'framebuffer') {
+     v194 = v194.color[0];
     }
-    v199 = v198._texture;
-    v8.uniform1i(atlas.location, v199.bind());
+    v195 = v194._texture;
+    v8.uniform1i(atlas.location, v195.bind());
+    v196 = a0['opacity'];
+    v8.uniform1f(opacity.location, v196);
+    v197 = $7.call(this, v2, a0, 0);
+    v198 = v197[0];
+    v199 = v197[1];
+    v8.uniform2f(atlasSize.location, v198, v199);
     v200 = v4.elements;
     if (v200) {
      v8.bindBuffer(34963, v200.buffer.buffer);
@@ -25583,7 +25583,7 @@ var allFns = {
      if (v152) {
       v1.destroyStream(v153);
      }
-     v199.unbind();
+     v195.unbind();
     }
    }
    , 'scope': function (a0, a1, a2) {
@@ -25644,14 +25644,14 @@ var allFns = {
     v234 = v14[64];
     v14[64] = v233;
     v235 = $8.call(this, v2, a0, a2);
-    v236 = v14[69];
-    v14[69] = v235;
+    v236 = v14[68];
+    v14[68] = v235;
     v237 = $9.call(this, v2, a0, a2);
-    v238 = v14[67];
-    v14[67] = v237;
+    v238 = v14[66];
+    v14[66] = v237;
     v239 = $10.call(this, v2, a0, a2);
-    v240 = v14[66];
-    v14[66] = v239;
+    v240 = v14[69];
+    v14[69] = v239;
     v241 = a0['baseline'];
     v242 = v14[65];
     v14[65] = v241;
@@ -25668,8 +25668,8 @@ var allFns = {
     v250 = v14[10];
     v14[10] = v249;
     v251 = a0['positionOffset'];
-    v252 = v14[68];
-    v14[68] = v251;
+    v252 = v14[67];
+    v14[67] = v251;
     v253 = this['scale'];
     v254 = v14[6];
     v14[6] = v253;
@@ -26015,15 +26015,15 @@ var allFns = {
     v4.count = v231;
     v4.primitive = v232;
     v14[64] = v234;
-    v14[69] = v236;
-    v14[67] = v238;
-    v14[66] = v240;
+    v14[68] = v236;
+    v14[66] = v238;
+    v14[69] = v240;
     v14[65] = v242;
     v14[62] = v244;
     v14[14] = v246;
     v14[63] = v248;
     v14[10] = v250;
-    v14[68] = v252;
+    v14[67] = v252;
     v14[6] = v254;
     v14[8] = v256;
     v14[3] = v258;
